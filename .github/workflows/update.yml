@@ -1,0 +1,24 @@
+name: auto-update description and homepage
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+permissions: write-all
+
+jobs:
+  task:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          # https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
+          curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \
+            | jq '.news[0] | {description:.title, homepage:.url}' \
+            | tee \
+            | curl -X PATCH \
+                   -H 'Authorization: Bearer ${{ secrets.TOKEN }}' \
+                   -H 'Content-Type: application/json' \
+                   https://api.github.com/repos/${{ github.repository }} \
+                   --data-binary @- \
+                   --fail

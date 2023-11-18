@@ -1,5 +1,5 @@
-hotlist (Propaganda in China)
-=============================
+Propaganda (Fake News in China)
+===============================
 
 ![](https://github.com/easydata/propaganda/actions/workflows/update.yml/badge.svg)
 
@@ -18,7 +18,7 @@ hotlist (Propaganda in China)
 ## Latest News
 
 ```bash
-curl -s https://api.github.com/repos/EasyPi/hotlist/releases/latest |
+curl -s https://api.github.com/repos/EasyData/propaganda/releases/latest |
   jq -r '.assets[]|select(.name|test("json$")).browser_download_url' |
     wget -q -i- -O- |
       less

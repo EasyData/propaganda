@@ -14,7 +14,7 @@ jobs:
       - run: |
           # https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
           curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \
-            | jq '.news[0] | {description:"🫵🏻\(.title)", homepage:.url}' \
+            | jq '.news[0] | {description:"🫵🏻 \(.title)", homepage:.url}' \
             | tee /dev/stderr \
             | curl -X PATCH \
                    -H 'Authorization: Bearer ${{ secrets.TOKEN }}' \

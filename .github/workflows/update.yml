@@ -26,7 +26,8 @@ jobs:
       - run: |
           sudo apt install -y mosquitto-clients
           curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \
-            | mosquitto_pub -h broker.emqx.io -t 'propaganda' -s -q 2 -r
+            | jq '.news[0]' \
+            | mosquitto_pub -h broker.emqx.io -t 'propaganda' -s -r -q 2
 
       - run: |
           curl -sSL https://api.github.com/repos/${{ github.repository }}/releases/latest \

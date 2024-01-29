@@ -23,3 +23,12 @@ curl -s https://api.github.com/repos/EasyData/propaganda/releases/latest |
     wget -q -i- -O- |
       less
 ```
+## Red Banner
+
+```bash
+curl -s https://api.github.com/repos/EasyData/propaganda/releases/latest |
+  jq -r '.assets[]|select(.name=="banner.jpg").browser_download_url' |
+    sed 's/^/url = /' |
+      curl -sLK- |
+        imgcat
+```

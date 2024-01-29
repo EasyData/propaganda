@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 16
       - run: |
+          sudo apt-get -y install fonts-wqy-zenhei
           wget https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-linux.tar.gz
           tar xzf htmlq-x86_64-linux.tar.gz
           sudo mv htmlq /usr/local/bin/

@@ -35,6 +35,7 @@ jobs:
           curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \
             | tee /dev/stderr | jq -r '.news[0] | "## 📣 最高指示 🫵🏻\n\n[\(.title)](\(.url))"' > topnews.md
       - run: |
+          identify -list font
           # identify -list policy
           sudo sed -i '/pattern="@\*"/d' /etc/ImageMagick-6/policy.xml
           curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \

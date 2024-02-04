@@ -41,6 +41,7 @@ jobs:
           sudo sed -i '/pattern="@\*"/d' /etc/ImageMagick-6/policy.xml
           curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \
             | jq -r '.news[0].title' \
+            | tr -d '\n' \
             | convert -background red -fill white -gravity Center -font 'WenQuanYi-Zen-Hei' -pointsize 48 label:@- banner.jpg
       - id: date
         run: echo "::set-output name=dt::$(TZ=UTC date +%Y%m%d-%H%M%S)"

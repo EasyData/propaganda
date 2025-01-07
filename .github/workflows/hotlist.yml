@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     services:
       chrome:
-        image: browserless/chrome
+        image: browserless/chrome:1-chrome-stable
         ports:
           - 3000:3000
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 22
       - run: |
           sudo apt-get -y install fonts-wqy-zenhei
           wget https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-linux.tar.gz
@@ -45,7 +45,7 @@ jobs:
             | convert -background red -fill white -gravity Center -font 'WenQuanYi-Zen-Hei' -pointsize 48 label:@- banner.jpg
       - id: date
         run: echo "::set-output name=dt::$(TZ=UTC date +%Y%m%d-%H%M%S)"
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           tag_name: hotlist-${{ steps.date.outputs.dt }}
           body_path: topnews.md

@@ -30,7 +30,7 @@ jobs:
           bash sogou.sh > sogou.json
           bash toutiao.sh > toutiao.json
           bash zhihu.sh > zhihu.json
-          node bilibili.js > bilibili.json
+          # node bilibili.js > bilibili.json
           bash weibo.sh > weibo.json
       - run: |
           curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \
@@ -56,7 +56,7 @@ jobs:
             sogou.json
             toutiao.json
             zhihu.json
-            bilibili.json
-            bilibili.png
             weibo.json
-            #weibo.png
+          # weibo.png
+          # bilibili.json
+          # bilibili.png

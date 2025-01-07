@@ -21,9 +21,9 @@ const puppeteer = require('puppeteer-core');
       const title = e.querySelector('.trending-text').innerText;
       const tags = Array.from(e.querySelectorAll('.trending-mark')).map(e => {
         const src = e.getAttribute('src');
-        if (src.indexOf('4d579fb61f9655316582db193118bba3a721eec0.png') >= 0) {
+        if (src.indexOf('UF7B1wVKT2.png') >= 0) {
           return '新';
-        } else if (src.indexOf('e9e7a2d8497d4063421b685e72680bf1cfb99a0d.png') >= 0) {
+        } else if (src.indexOf('lrx9rnKo24.png') >= 0) {
           return '热';
         } else {
           return '?';

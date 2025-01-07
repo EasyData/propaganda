@@ -7,7 +7,7 @@ on:
 
 jobs:
   crawl:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     services:
       chrome:
         image: browserless/chrome:1-chrome-stable
@@ -38,6 +38,8 @@ jobs:
       - run: |
           # identify -list font
           # identify -list policy
+          sudo apt update -y
+          sudo apt install -y imagemagick
           sudo sed -i '/pattern="@\*"/d' /etc/ImageMagick-6/policy.xml
           curl -sSL https://topnews.imtt.qq.com/trpc.pcse.top_news.TopNews/Fetch \
             | jq -r '.news[0].title' \
